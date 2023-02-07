@@ -1,0 +1,7 @@
+Boost - Blue - 6 sides, 2 blanks
+Setback - Black - 6 sides, 2 blanks
+Ability - Green - 8 sides, 1 blank
+Difficulty - Purple - 8 sides, 1 blank
+Proficiency - Yellow - 12 sides, 1 blank, 1 triumph
+Challenge - Red - 12 sides, 1 blank, 1 despair
+Force - White - 12 sides, no blanks
