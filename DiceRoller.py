@@ -10,7 +10,14 @@ num_of_proficiency_dice = 3
 num_of_challenge_dice = 0
 num_of_force_dice = 4
 results = []
-counted_results = []
+counted_results_dict = {"Successes" : 0,
+                   "Failures" : 0,
+                   "Advantages" : 0,
+                   "Threats" : 0,
+                   "Triumphs" : 0,
+                   "Despairs" : 0,
+                   "Lights" : 0,
+                   "Darks" : 0}
 
 
 #def GetDiceCounts (dicecount):
@@ -230,43 +237,44 @@ def calculate_force_dice (num_of_force_dice, results):
             
     return
 
-def CountResults (results, counted_results):
-    
-    successes = 0
-    advantages = 0
-    triumphs = 0
-    threats = 0
-    failures = 0
-    despairs = 0
-    lights = 0
-    darks = 0
-    
+def count_results (results, counted_results_dict):
+        
     for word in results:
         if (word == "Success"):
-            successes = successes + 1
-        elif (word == "Advantage"):
-            advantages = advantages + 1
-        elif (word == "Triumph"):
-            triumphs = triumphs + 1
-        elif (word == "Threat"):
-            threats = threats + 1
+            counted_results_dict['Successes'] = counted_results_dict['Successes'] + 1
         elif (word == "Failure"):
-            failures = failures + 1
+            counted_results_dict['Failures'] = counted_results_dict['Failures'] + 1
+        elif (word == "Advantage"):
+            counted_results_dict['Advantages'] = counted_results_dict['Advantages'] + 1
+        elif (word == "Threat"):
+            counted_results_dict['Threats'] = counted_results_dict['Threats'] + 1
+        elif (word == "Triumph"):
+            counted_results_dict['Triumphs'] = counted_results_dict['Triumphs'] + 1
         elif (word == "Despair"):
-            despairs = despairs + 1
+            counted_results_dict['Despairs'] = counted_results_dict['Despairs'] + 1
         elif (word == "Light"):
-            lights = lights + 1
+            counted_results_dict['Lights'] = counted_results_dict['Lights'] + 1
         elif (word == "Dark"):
-            darks = darks + 1
-            
-    counted_results = [successes, advantages, triumphs, threats, failures, despairs, lights, darks]
+            counted_results_dict['Darks'] = counted_results_dict['Darks'] + 1
     
-    return counted_results
+    return counted_results_dict
 
-def display_to_terminal (counted_results):
+def cancel_out_results (counted_results_dict):
     
+    #Cancel successes and failures out
+    if (counted_results_dict['Successes'] == counted_results_dict['Failures']):
+        counted_results_dict['Successes'] = 0
+        counted_results_dict['Failures'] = 0
+    elif (counted_results_dict['Successes'] > counted_results_dict['Failures']):
+        counted_results_dict['Successes'] = counted_results_dict['Successes'] - counted_results_dict['Failures']
+        counted_results_dict['Failures'] = counted_results_dict['Failures'] - counted_results_dict['Failures']
+    elif (counted_results_dict['Failures'] > counted_results_dict['Successes']):
+        counted_results_dict['Failures'] = counted_results_dict['Failures'] - counted_results_dict['Successes']
+        counted_results_dict['Successes'] = counted_results_dict['Successes'] - counted_results_dict['Successes']
+        
+    return counted_results_dict
     
-
+#Function Calls
 calculate_boost_dice(num_of_boost_dice, results)
 calculate_setback_dice(num_of_setback_dice, results)
 calculate_ability_dice(num_of_ability_dice, results)
@@ -275,6 +283,10 @@ calculate_proficiency_dice(num_of_proficiency_dice, results)
 calculate_challenge_dice(num_of_challenge_dice, results)
 calculate_force_dice(num_of_force_dice, results)
 
-counted_results = CountResults(results, counted_results)
+counted_results_dict = count_results(results, counted_results_dict)
 
-print(display_to_terminal(counted_results))
+print(counted_results_dict)
+
+cancelled_results_dict = cancel_out_results(counted_results_dict)
+
+print(cancelled_results_dict)
