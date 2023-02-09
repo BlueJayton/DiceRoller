@@ -2,13 +2,13 @@
 import random
 
 
-num_of_boost_dice = 10
-num_of_setback_dice = 10
-num_of_ability_dice = 10
-num_of_difficulty_dice = 10
-num_of_proficiency_dice = 10
-num_of_challenge_dice = 10
-num_of_force_dice = 10
+boost = 10
+setback = 10
+ability = 10
+difficulty = 10
+proficiency = 10
+challenge = 10
+force = 10
 results = []
 counted_results_dict = {"Successes" : 0, "Failures" : 0,
                         "Advantages" : 0, "Threats" : 0,
@@ -19,12 +19,12 @@ counted_results_dict = {"Successes" : 0, "Failures" : 0,
 #def GetDiceCounts (dicecount):
         
 
-def calculate_boost_dice (num_of_boost_dice, results):
-    if num_of_boost_dice == 0:
+def calculate_boost_dice (boost, results):
+    if boost == 0:
         return
     
     num_of_faces = [1,2,3,4,5,6]
-    for die in range(num_of_boost_dice):
+    for die in range(boost):
         roll = random.choice(num_of_faces)
         
         if (roll == 3):
@@ -40,12 +40,12 @@ def calculate_boost_dice (num_of_boost_dice, results):
             
     return
 
-def calculate_setback_dice (num_of_setback_dice, results):
-    if num_of_setback_dice == 0:
+def calculate_setback_dice (setback, results):
+    if setback == 0:
         return
     
     num_of_faces = [1,2,3,4,5,6]
-    for die in range(num_of_setback_dice):
+    for die in range(setback):
         roll = random.choice(num_of_faces)
         
         if (roll == 3):
@@ -59,12 +59,12 @@ def calculate_setback_dice (num_of_setback_dice, results):
             
     return
 
-def calculate_ability_dice (num_of_ability_dice, results):
-    if num_of_ability_dice == 0:
+def calculate_ability_dice (ability, results):
+    if ability == 0:
         return
     
     num_of_faces = [1,2,3,4,5,6,7,8]
-    for die in range(num_of_ability_dice):
+    for die in range(ability):
         roll = random.choice(num_of_faces)
         
         if (roll == 2):
@@ -87,12 +87,12 @@ def calculate_ability_dice (num_of_ability_dice, results):
             
     return
 
-def calculate_difficulty_dice (num_of_difficulty_dice, results):
-    if num_of_difficulty_dice == 0:
+def calculate_difficulty_dice (difficulty, results):
+    if difficulty == 0:
         return
     
     num_of_faces = [1,2,3,4,5,6,7,8]
-    for die in range(num_of_difficulty_dice):
+    for die in range(difficulty):
         roll = random.choice(num_of_faces)
         
         if (roll == 2):
@@ -115,12 +115,12 @@ def calculate_difficulty_dice (num_of_difficulty_dice, results):
             
     return
 
-def calculate_proficiency_dice (num_of_proficiency_dice, results):
-    if num_of_proficiency_dice == 0:
+def calculate_proficiency_dice (proficiency, results):
+    if proficiency == 0:
         return
     
     num_of_faces = [1,2,3,4,5,6,7,8,9,10,11,12]
-    for die in range(num_of_proficiency_dice):
+    for die in range(proficiency):
         roll = random.choice(num_of_faces)
         
         if (roll == 2):
@@ -155,12 +155,12 @@ def calculate_proficiency_dice (num_of_proficiency_dice, results):
             
     return
 
-def calculate_challenge_dice (num_of_challenge_dice, results):
-    if num_of_challenge_dice == 0:
+def calculate_challenge_dice (challenge, results):
+    if challenge == 0:
         return
     
     num_of_faces = [1,2,3,4,5,6,7,8,9,10,11,12]
-    for die in range(num_of_challenge_dice):
+    for die in range(challenge):
         roll = random.choice(num_of_faces)
         
         if (roll == 2):
@@ -194,12 +194,12 @@ def calculate_challenge_dice (num_of_challenge_dice, results):
             
     return
 
-def calculate_force_dice (num_of_force_dice, results):
-    if num_of_force_dice == 0:
+def calculate_force_dice (force, results):
+    if force == 0:
         return
     
     num_of_faces = [1,2,3,4,5,6,7,8,9,10,11,12]
-    for die in range(num_of_force_dice):
+    for die in range(force):
         roll = random.choice(num_of_faces)
         
         if (roll == 1):
@@ -279,41 +279,81 @@ def cancel_out_results (counted_results_dict):
         counted_results_dict['Threats'] = counted_results_dict['Threats'] - counted_results_dict['Advantages']
         counted_results_dict['Advantages'] = counted_results_dict['Advantages'] - counted_results_dict['Advantages']
         
-    #Cancel triumphs and despairs out
-    if (counted_results_dict['Triumphs'] == counted_results_dict['Despairs']):
-        counted_results_dict['Triumphs'] = 0
-        counted_results_dict['Despairs'] = 0
-    elif (counted_results_dict['Triumphs'] > counted_results_dict['Despairs']):
-        counted_results_dict['Triumphs'] = counted_results_dict['Triumphs'] - counted_results_dict['Despairs']
-        counted_results_dict['Despairs'] = counted_results_dict['Despairs'] - counted_results_dict['Despairs']
-    elif (counted_results_dict['Despairs'] > counted_results_dict['Triumphs']):
-        counted_results_dict['Despairs'] = counted_results_dict['Despairs'] - counted_results_dict['Triumphs']
-        counted_results_dict['Triumphs'] = counted_results_dict['Triumphs'] - counted_results_dict['Triumphs']
-        
     return counted_results_dict
 
-def reset ():
-    num_of_boost_dice = 0
-    num_of_setback_dice = 0
-    num_of_ability_dice = 0
-    num_of_difficulty_dice = 0
-    num_of_proficiency_dice = 0
-    num_of_challenge_dice = 0
-    num_of_force_dice = 0
+def display_formatted_results (results_dict):
+    
+    output = []
+    
+    if (results_dict['Successes'] > 1):
+        output.append(f"{results_dict['Successes']} successes, ")
+    elif (results_dict['Successes'] == 1):
+        output.append(f"{results_dict['Successes']} success, ")
+        
+    if (results_dict['Failures'] > 1):
+        output.append(f"{results_dict['Failures']} failures, ")
+    elif (results_dict['Failures'] == 1):
+        output.append(f"{results_dict['Failures']} failure, ")
+        
+    if (results_dict['Advantages'] > 1):
+        output.append(f"{results_dict['Advantages']} advantages, ")
+    elif (results_dict['Advantages'] == 1):
+        output.append(f"{results_dict['Advantages']} advantage, ")
+        
+    if (results_dict['Threats'] > 1):
+        output.append(f"{results_dict['Threats']} threats, ")
+    elif (results_dict['Threats'] == 1):
+        output.append(f"{results_dict['Threats']} threat, ")
+        
+    if (results_dict['Triumphs'] > 1):
+        output.append(f"{results_dict['Triumphs']} triumphs, ")
+    elif (results_dict['Triumphs'] == 1):
+        output.append(f"{results_dict['Triumphs']} triumph, ")
+        
+    if (results_dict['Despairs'] > 1):
+        output.append(f"{results_dict['Despairs']} despairs, ")
+    elif (results_dict['Despairs'] == 1):
+        output.append(f"{results_dict['Despairs']} despair, ")
+        
+    if (results_dict['Lights'] > 1):
+        output.append(f"{results_dict['Lights']} light, ")
+    elif (results_dict['Lights'] == 1):
+        output.append(f"{results_dict['Lights']} light, ")
+        
+    if (results_dict['Darks'] > 1):
+        output.append(f"{results_dict['Darks']} dark, ")
+    elif (results_dict['Darks'] == 1):
+        output.append(f"{results_dict['Darks']} dark, ")
+        
+    if (results_dict['Successes'] == 0 and results_dict['Failures'] == 0 
+        and results_dict['Advantages'] == 0 and results_dict['Threats'] == 0 
+        and results_dict['Triumphs'] == 0 and results_dict['Despairs'] == 0 
+        and results_dict['Lights'] == 0 and results_dict['Darks'] == 0):
+            return "It's a wash!!!"
+        
+    output = '' .join(output)
+    output = output[:-2]
+    return output
+
+def reset (dice):
+    dice = 0
     
     return
-    
+
+
+     
+
 #Function Calls
-calculate_boost_dice(num_of_boost_dice, results)
-calculate_setback_dice(num_of_setback_dice, results)
-calculate_ability_dice(num_of_ability_dice, results)
-calculate_difficulty_dice(num_of_difficulty_dice, results)
-calculate_proficiency_dice(num_of_proficiency_dice, results)
-calculate_challenge_dice(num_of_challenge_dice, results)
-calculate_force_dice(num_of_force_dice, results)
+calculate_boost_dice(boost, results)
+calculate_setback_dice(setback, results)
+calculate_ability_dice(ability, results)
+calculate_difficulty_dice(difficulty, results)
+calculate_proficiency_dice(proficiency, results)
+calculate_challenge_dice(challenge, results)
+calculate_force_dice(force, results)
 
 counted_results_dict = count_results(results, counted_results_dict)
 
 cancelled_results_dict = cancel_out_results(counted_results_dict)
 
-print(cancelled_results_dict)
+print(display_formatted_results(cancelled_results_dict))
