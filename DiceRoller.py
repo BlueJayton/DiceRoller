@@ -10,14 +10,10 @@ num_of_proficiency_dice = 10
 num_of_challenge_dice = 10
 num_of_force_dice = 10
 results = []
-counted_results_dict = {"Successes" : 0,
-                   "Failures" : 0,
-                   "Advantages" : 0,
-                   "Threats" : 0,
-                   "Triumphs" : 0,
-                   "Despairs" : 0,
-                   "Lights" : 0,
-                   "Darks" : 0}
+counted_results_dict = {"Successes" : 0, "Failures" : 0,
+                        "Advantages" : 0, "Threats" : 0,
+                        "Triumphs" : 0, "Despairs" : 0,
+                        "Lights" : 0, "Darks" : 0}
 
 
 #def GetDiceCounts (dicecount):
