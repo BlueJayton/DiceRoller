@@ -286,44 +286,44 @@ def display_formatted_results (results_dict):
     output = []
     
     if (results_dict['Successes'] > 1):
-        output.append(f"{results_dict['Successes']} successes, ")
+        output.append(f"{results_dict['Successes']} successes")
     elif (results_dict['Successes'] == 1):
-        output.append(f"{results_dict['Successes']} success, ")
+        output.append(f"{results_dict['Successes']} success")
         
     if (results_dict['Failures'] > 1):
-        output.append(f"{results_dict['Failures']} failures, ")
+        output.append(f"{results_dict['Failures']} failures")
     elif (results_dict['Failures'] == 1):
-        output.append(f"{results_dict['Failures']} failure, ")
+        output.append(f"{results_dict['Failures']} failure")
         
     if (results_dict['Advantages'] > 1):
-        output.append(f"{results_dict['Advantages']} advantages, ")
+        output.append(f"{results_dict['Advantages']} advantages")
     elif (results_dict['Advantages'] == 1):
-        output.append(f"{results_dict['Advantages']} advantage, ")
+        output.append(f"{results_dict['Advantages']} advantage")
         
     if (results_dict['Threats'] > 1):
-        output.append(f"{results_dict['Threats']} threats, ")
+        output.append(f"{results_dict['Threats']} threats")
     elif (results_dict['Threats'] == 1):
-        output.append(f"{results_dict['Threats']} threat, ")
+        output.append(f"{results_dict['Threats']} threat")
         
     if (results_dict['Triumphs'] > 1):
-        output.append(f"{results_dict['Triumphs']} triumphs, ")
+        output.append(f"{results_dict['Triumphs']} triumphs")
     elif (results_dict['Triumphs'] == 1):
-        output.append(f"{results_dict['Triumphs']} triumph, ")
+        output.append(f"{results_dict['Triumphs']} triumph")
         
     if (results_dict['Despairs'] > 1):
-        output.append(f"{results_dict['Despairs']} despairs, ")
+        output.append(f"{results_dict['Despairs']} despairs")
     elif (results_dict['Despairs'] == 1):
-        output.append(f"{results_dict['Despairs']} despair, ")
+        output.append(f"{results_dict['Despairs']} despair")
         
     if (results_dict['Lights'] > 1):
-        output.append(f"{results_dict['Lights']} light, ")
+        output.append(f"{results_dict['Lights']} light")
     elif (results_dict['Lights'] == 1):
-        output.append(f"{results_dict['Lights']} light, ")
+        output.append(f"{results_dict['Lights']} light")
         
     if (results_dict['Darks'] > 1):
-        output.append(f"{results_dict['Darks']} dark, ")
+        output.append(f"{results_dict['Darks']} dark")
     elif (results_dict['Darks'] == 1):
-        output.append(f"{results_dict['Darks']} dark, ")
+        output.append(f"{results_dict['Darks']} dark")
         
     if (results_dict['Successes'] == 0 and results_dict['Failures'] == 0 
         and results_dict['Advantages'] == 0 and results_dict['Threats'] == 0 
@@ -331,8 +331,7 @@ def display_formatted_results (results_dict):
         and results_dict['Lights'] == 0 and results_dict['Darks'] == 0):
             return "It's a wash!!!"
         
-    output = '' .join(output)
-    output = output[:-2]
+    output = ', ' .join(output)
     return output
 
 def reset (dice):
