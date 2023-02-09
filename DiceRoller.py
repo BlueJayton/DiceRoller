@@ -2,13 +2,13 @@
 import random
 
 
-num_of_boost_dice = 0
-num_of_setback_dice = 0
-num_of_ability_dice = 1
-num_of_difficulty_dice = 3
-num_of_proficiency_dice = 3
-num_of_challenge_dice = 0
-num_of_force_dice = 4
+num_of_boost_dice = 10
+num_of_setback_dice = 10
+num_of_ability_dice = 10
+num_of_difficulty_dice = 10
+num_of_proficiency_dice = 10
+num_of_challenge_dice = 10
+num_of_force_dice = 10
 results = []
 counted_results_dict = {"Successes" : 0,
                    "Failures" : 0,
@@ -272,7 +272,40 @@ def cancel_out_results (counted_results_dict):
         counted_results_dict['Failures'] = counted_results_dict['Failures'] - counted_results_dict['Successes']
         counted_results_dict['Successes'] = counted_results_dict['Successes'] - counted_results_dict['Successes']
         
+    #Cancel advantages and threats out
+    if (counted_results_dict['Advantages'] == counted_results_dict['Threats']):
+        counted_results_dict['Advantages'] = 0
+        counted_results_dict['Threats'] = 0
+    elif (counted_results_dict['Advantages'] > counted_results_dict['Threats']):
+        counted_results_dict['Advantages'] = counted_results_dict['Advantages'] - counted_results_dict['Threats']
+        counted_results_dict['Threats'] = counted_results_dict['Threats'] - counted_results_dict['Threats']
+    elif (counted_results_dict['Threats'] > counted_results_dict['Advantages']):
+        counted_results_dict['Threats'] = counted_results_dict['Threats'] - counted_results_dict['Advantages']
+        counted_results_dict['Advantages'] = counted_results_dict['Advantages'] - counted_results_dict['Advantages']
+        
+    #Cancel triumphs and despairs out
+    if (counted_results_dict['Triumphs'] == counted_results_dict['Despairs']):
+        counted_results_dict['Triumphs'] = 0
+        counted_results_dict['Despairs'] = 0
+    elif (counted_results_dict['Triumphs'] > counted_results_dict['Despairs']):
+        counted_results_dict['Triumphs'] = counted_results_dict['Triumphs'] - counted_results_dict['Despairs']
+        counted_results_dict['Despairs'] = counted_results_dict['Despairs'] - counted_results_dict['Despairs']
+    elif (counted_results_dict['Despairs'] > counted_results_dict['Triumphs']):
+        counted_results_dict['Despairs'] = counted_results_dict['Despairs'] - counted_results_dict['Triumphs']
+        counted_results_dict['Triumphs'] = counted_results_dict['Triumphs'] - counted_results_dict['Triumphs']
+        
     return counted_results_dict
+
+def reset ():
+    num_of_boost_dice = 0
+    num_of_setback_dice = 0
+    num_of_ability_dice = 0
+    num_of_difficulty_dice = 0
+    num_of_proficiency_dice = 0
+    num_of_challenge_dice = 0
+    num_of_force_dice = 0
+    
+    return
     
 #Function Calls
 calculate_boost_dice(num_of_boost_dice, results)
@@ -284,8 +317,6 @@ calculate_challenge_dice(num_of_challenge_dice, results)
 calculate_force_dice(num_of_force_dice, results)
 
 counted_results_dict = count_results(results, counted_results_dict)
-
-print(counted_results_dict)
 
 cancelled_results_dict = cancel_out_results(counted_results_dict)
 
