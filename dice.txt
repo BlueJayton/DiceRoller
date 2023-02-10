@@ -5,3 +5,8 @@ Difficulty - Purple - 8 sides, 1 blank
 Proficiency - Yellow - 12 sides, 1 blank, 1 triumph
 Challenge - Red - 12 sides, 1 blank, 1 despair
 Force - White - 12 sides, no blanks
+
+successes and failures cancel out
+advantages and threats cancel out
+triumphs and despairs DO NOT cancel out
+lights and dark DO NOT cancel out
