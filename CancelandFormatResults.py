@@ -1,28 +1,28 @@
-def cancel_out_results (counted_results_dict):
+def cancel_out_results (cancel_results_dict):
     
     #Cancel successes and failures out
-    if (counted_results_dict['Successes'] == counted_results_dict['Failures']):
-        counted_results_dict['Successes'] = 0
-        counted_results_dict['Failures'] = 0
-    elif (counted_results_dict['Successes'] > counted_results_dict['Failures']):
-        counted_results_dict['Successes'] = counted_results_dict['Successes'] - counted_results_dict['Failures']
-        counted_results_dict['Failures'] = 0
-    elif (counted_results_dict['Failures'] > counted_results_dict['Successes']):
-        counted_results_dict['Failures'] = counted_results_dict['Failures'] - counted_results_dict['Successes']
-        counted_results_dict['Successes'] = 0
+    if (cancel_results_dict['Successes'] == cancel_results_dict['Failures']):
+        cancel_results_dict['Successes'] = 0
+        cancel_results_dict['Failures'] = 0
+    elif (cancel_results_dict['Successes'] > cancel_results_dict['Failures']):
+        cancel_results_dict['Successes'] = cancel_results_dict['Successes'] - cancel_results_dict['Failures']
+        cancel_results_dict['Failures'] = 0
+    elif (cancel_results_dict['Failures'] > cancel_results_dict['Successes']):
+        cancel_results_dict['Failures'] = cancel_results_dict['Failures'] - cancel_results_dict['Successes']
+        cancel_results_dict['Successes'] = 0
         
     #Cancel advantages and threats out
-    if (counted_results_dict['Advantages'] == counted_results_dict['Threats']):
-        counted_results_dict['Advantages'] = 0
-        counted_results_dict['Threats'] = 0
-    elif (counted_results_dict['Advantages'] > counted_results_dict['Threats']):
-        counted_results_dict['Advantages'] = counted_results_dict['Advantages'] - counted_results_dict['Threats']
-        counted_results_dict['Threats'] = counted_results_dict['Threats'] - counted_results_dict['Threats']
-    elif (counted_results_dict['Threats'] > counted_results_dict['Advantages']):
-        counted_results_dict['Threats'] = counted_results_dict['Threats'] - counted_results_dict['Advantages']
-        counted_results_dict['Advantages'] = counted_results_dict['Advantages'] - counted_results_dict['Advantages']
+    if (cancel_results_dict['Advantages'] == cancel_results_dict['Threats']):
+        cancel_results_dict['Advantages'] = 0
+        cancel_results_dict['Threats'] = 0
+    elif (cancel_results_dict['Advantages'] > cancel_results_dict['Threats']):
+        cancel_results_dict['Advantages'] = cancel_results_dict['Advantages'] - cancel_results_dict['Threats']
+        cancel_results_dict['Threats'] = cancel_results_dict['Threats'] - cancel_results_dict['Threats']
+    elif (cancel_results_dict['Threats'] > cancel_results_dict['Advantages']):
+        cancel_results_dict['Threats'] = cancel_results_dict['Threats'] - cancel_results_dict['Advantages']
+        cancel_results_dict['Advantages'] = cancel_results_dict['Advantages'] - cancel_results_dict['Advantages']
         
-    return counted_results_dict
+    return cancel_results_dict
 
 def display_formatted_results (results_dict):
     

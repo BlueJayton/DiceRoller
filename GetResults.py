@@ -34,9 +34,9 @@ def calculate_setback_dice (setback, counted_results_dict):
         elif (roll == 4):
             counted_results_dict['Failures'] += 1
         elif (roll == 5):
-            counted_results_dict['Failures'] += 1
+            counted_results_dict['Threats'] += 1
         elif (roll == 6):
-            counted_results_dict['Failures'] += 1
+            counted_results_dict['Threats'] += 1
             
     return
 
@@ -82,17 +82,17 @@ def calculate_difficulty_dice (difficulty, counted_results_dict):
             counted_results_dict['Failures'] += 1
             counted_results_dict['Failures'] += 1
         elif (roll == 4):
-            counted_results_dict['Failures'] += 1
+            counted_results_dict['Threats'] += 1
         elif (roll == 5):
-            counted_results_dict['Failures'] += 1
+            counted_results_dict['Threats'] += 1
         elif (roll == 6):
-            counted_results_dict['Failures'] += 1
+            counted_results_dict['Threats'] += 1
         elif (roll == 7):
-            counted_results_dict['Failures'] += 1
-            counted_results_dict['Failures'] += 1
+            counted_results_dict['Threats'] += 1
+            counted_results_dict['Threats'] += 1
         elif (roll == 8):
             counted_results_dict['Failures'] += 1
-            counted_results_dict['Failures'] += 1
+            counted_results_dict['Threats'] += 1
             
     return
 
@@ -155,21 +155,21 @@ def calculate_challenge_dice (challenge, counted_results_dict):
             counted_results_dict['Failures'] += 1
             counted_results_dict['Failures'] += 1
         elif (roll == 6):
-            counted_results_dict['Failures'] += 1
+            counted_results_dict['Threats'] += 1
         elif (roll == 7):
-            counted_results_dict['Failures'] += 1
+            counted_results_dict['Threats'] += 1
         elif (roll == 8):
             counted_results_dict['Failures'] += 1
-            counted_results_dict['Failures'] += 1
+            counted_results_dict['Threats'] += 1
         elif (roll == 9):
             counted_results_dict['Failures'] += 1
-            counted_results_dict['Failures'] += 1
+            counted_results_dict['Threats'] += 1
         elif (roll == 10):
-            counted_results_dict['Failures'] += 1
-            counted_results_dict['Failures'] += 1
+            counted_results_dict['Threats'] += 1
+            counted_results_dict['Threats'] += 1
         elif (roll == 11):
-            counted_results_dict['Failures'] += 1
-            counted_results_dict['Failures'] += 1
+            counted_results_dict['Threats'] += 1
+            counted_results_dict['Threats'] += 1
         elif (roll == 12):
             counted_results_dict['Despairs'] += 1
             
