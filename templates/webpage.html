@@ -1,11 +1,35 @@
-<!-- templates/template.html -->
-<html>
+<!DOCTYPE html>
+<html land="en">
     <head>
-
+        <title> EOTE Dice Roller </title>
+        <meta charset="utf-8">
     </head>
     <body>
+        <form method = post>
+            <label for="boost">Boost:</label><br>
+            <input type="number" id="boost" name="boost" min="0" max="20" value="0"><br>
+
+            <label for="setback">Setback:</label><br>
+            <input type="number" id="setback" name="setback" min="0" max="20" value="0"><br>
+
+            <label for="ability">Ability:</label><br>
+            <input type="number" id="ability" name="ability" min="0" max="20" value="0"><br>
+
+            <label for="difficulty">Difficulty:</label><br>
+            <input type="number" id="difficulty" name="difficulty" min="0" max="20" value="0"><br>
+
+            <label for="proficiency">Proficiency:</label><br>
+            <input type="number" id="proficiency" name="proficiency" min="0" max="20" value="0"><br>
+
+            <label for="challenge">Challenge:</label><br>
+            <input type="number" id="challenge" name="challenge" min="0" max="20" value="0"><br>
+
+            <label for="force">Force:</label><br>
+            <input type="number" id="force" name="force" min="0" max="20" value="0"><br>
+
+            <input type="submit" value="Roll"><br>
+          </form>
         <h1>{{dice_dict}}</h1>
-        <h1>{{counted_results_dict}}</h1>
         <h1>{{display_results}}</h1>
     </body>
 </html>

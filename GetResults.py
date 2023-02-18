@@ -1,11 +1,11 @@
 import random
 
-def calculate_boost_dice (boost, counted_results_dict):
-    if boost == 0:
+def calculate_boost_dice (dice_dict, counted_results_dict):
+    if int(dice_dict["Boost"]) == 0:
         return
     
     num_of_faces = [1,2,3,4,5,6]
-    for die in range(boost):
+    for die in range(int(dice_dict["Boost"])):
         roll = random.choice(num_of_faces)
         
         if (roll == 3):
@@ -21,12 +21,12 @@ def calculate_boost_dice (boost, counted_results_dict):
             
     return
 
-def calculate_setback_dice (setback, counted_results_dict):
-    if setback == 0:
+def calculate_setback_dice (dice_dict, counted_results_dict):
+    if int(dice_dict["Setback"]) == 0:
         return
     
     num_of_faces = [1,2,3,4,5,6]
-    for die in range(setback):
+    for die in range(int(dice_dict["Setback"])):
         roll = random.choice(num_of_faces)
         
         if (roll == 3):
@@ -40,12 +40,12 @@ def calculate_setback_dice (setback, counted_results_dict):
             
     return
 
-def calculate_ability_dice (ability, counted_results_dict):
-    if ability == 0:
+def calculate_ability_dice (dice_dict, counted_results_dict):
+    if int(dice_dict["Ability"]) == 0:
         return
     
     num_of_faces = [1,2,3,4,5,6,7,8]
-    for die in range(ability):
+    for die in range(int(dice_dict["Ability"])):
         roll = random.choice(num_of_faces)
         
         if (roll == 2):
@@ -68,12 +68,12 @@ def calculate_ability_dice (ability, counted_results_dict):
             
     return
 
-def calculate_difficulty_dice (difficulty, counted_results_dict):
-    if difficulty == 0:
+def calculate_difficulty_dice (dice_dict, counted_results_dict):
+    if (int(dice_dict["Difficulty"])) == 0:
         return
     
     num_of_faces = [1,2,3,4,5,6,7,8]
-    for die in range(difficulty):
+    for die in range(int(dice_dict["Difficulty"])):
         roll = random.choice(num_of_faces)
         
         if (roll == 2):
@@ -96,12 +96,12 @@ def calculate_difficulty_dice (difficulty, counted_results_dict):
             
     return
 
-def calculate_proficiency_dice (proficiency, counted_results_dict):
-    if proficiency == 0:
+def calculate_proficiency_dice (dice_dict, counted_results_dict):
+    if int(dice_dict["Proficiency"]) == 0:
         return
     
     num_of_faces = [1,2,3,4,5,6,7,8,9,10,11,12]
-    for die in range(proficiency):
+    for die in range(int(dice_dict["Proficiency"])):
         roll = random.choice(num_of_faces)
         
         if (roll == 2):
@@ -136,12 +136,12 @@ def calculate_proficiency_dice (proficiency, counted_results_dict):
             
     return
 
-def calculate_challenge_dice (challenge, counted_results_dict):
-    if challenge == 0:
+def calculate_challenge_dice (dice_dict, counted_results_dict):
+    if int(dice_dict["Challenge"]) == 0:
         return
     
     num_of_faces = [1,2,3,4,5,6,7,8,9,10,11,12]
-    for die in range(challenge):
+    for die in range(int(dice_dict["Challenge"])):
         roll = random.choice(num_of_faces)
         
         if (roll == 2):
@@ -175,12 +175,12 @@ def calculate_challenge_dice (challenge, counted_results_dict):
             
     return
 
-def calculate_force_dice (force, counted_results_dict):
-    if force == 0:
+def calculate_force_dice (dice_dict, counted_results_dict):
+    if int(dice_dict["Force"]) == 0:
         return
     
     num_of_faces = [1,2,3,4,5,6,7,8,9,10,11,12]
-    for die in range(force):
+    for die in range(int(dice_dict["Force"])):
         roll = random.choice(num_of_faces)
         
         if (roll == 1):
