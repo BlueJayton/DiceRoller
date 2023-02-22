@@ -3,7 +3,6 @@ import flask
 from flask import request
 import RollDice
 import CancelandFormatResults
-import GetDiceNums
 
 app = flask.Flask(__name__)
 
@@ -21,8 +20,14 @@ display_results = []
 
 @app.route('/', methods = ['Post', 'Get'])
 def driver():
+    
+    counted_results_dict = {"Successes" : 0, "Failures" : 0,
+                            "Advantages" : 0, "Threats" : 0,
+                            "Triumphs" : 0, "Despairs" : 0,
+                            "Lights" : 0, "Darks" : 0}
+    
     if request.method == 'POST':
-
+        
         dice_dict["Boost"] = request.form.get("boost")
         dice_dict["Setback"] = request.form.get("setback")
         dice_dict["Ability"] = request.form.get("ability")
@@ -35,6 +40,7 @@ def driver():
 
     cancelled_results_dict = CancelandFormatResults.cancel_out_results(counted_results_dict)
     display_results = CancelandFormatResults.display_formatted_results(cancelled_results_dict)
+    
     
     return flask.render_template (
         "webpage.html",
