@@ -3,6 +3,7 @@ import flask
 from flask import request
 import RollDice
 import CancelandFormatResults
+import ResetDice
 
 app = flask.Flask(__name__)
 
@@ -18,7 +19,7 @@ counted_results_dict = {"Successes" : 0, "Failures" : 0,
 
 display_results = []
 
-@app.route('/', methods = ['Post', 'Get'])
+@app.route('/', methods = ['POST', 'GET'])
 def driver():
     
     counted_results_dict = {"Successes" : 0, "Failures" : 0,
@@ -28,18 +29,21 @@ def driver():
     
     if request.method == 'POST':
         
-        dice_dict["Boost"] = request.form.get("boost")
-        dice_dict["Setback"] = request.form.get("setback")
-        dice_dict["Ability"] = request.form.get("ability")
-        dice_dict["Difficulty"] = request.form.get("difficulty")
-        dice_dict["Proficiency"] = request.form.get("proficiency")
-        dice_dict["Challenge"] = request.form.get("challenge")
-        dice_dict["Force"] = request.form.get("force")
+        if request.form['submit_button'] == 'Roll':
+            dice_dict["Boost"] = request.form.get("boost")
+            dice_dict["Setback"] = request.form.get("setback")
+            dice_dict["Ability"] = request.form.get("ability")
+            dice_dict["Difficulty"] = request.form.get("difficulty")
+            dice_dict["Proficiency"] = request.form.get("proficiency")
+            dice_dict["Challenge"] = request.form.get("challenge")
+            dice_dict["Force"] = request.form.get("force")
         
-        RollDice.roll_all_dice (dice_dict, counted_results_dict)
+            RollDice.roll_all_dice (dice_dict, counted_results_dict)
+        elif request.form['submit_button'] == 'Reset':
+            ResetDice.reset_dice(dice_dict)
 
     cancelled_results_dict = CancelandFormatResults.cancel_out_results(counted_results_dict)
-    display_results = CancelandFormatResults.display_formatted_results(cancelled_results_dict)
+    display_results = CancelandFormatResults.display_formatted_results(cancelled_results_dict, dice_dict)
     
     
     return flask.render_template (
@@ -48,4 +52,4 @@ def driver():
         display_results = display_results
     )
 
-app.run()
+app.run(debug = True)

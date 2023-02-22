@@ -24,9 +24,14 @@ def cancel_out_results (cancel_results_dict):
         
     return cancel_results_dict
 
-def display_formatted_results (results_dict):
+def display_formatted_results (results_dict, dice_dict):
     
     output = []
+    
+    if all(dice == 0 for dice in dice_dict.values()):
+        output = ''
+        return output
+
     
     if (results_dict['Successes'] > 1):
         output.append(f"{results_dict['Successes']} successes")
