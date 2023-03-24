@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html land="en">
     <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/style.css') }}">
         <title> EOTE Dice Roller </title>
         <meta charset="utf-8">
+        <script>
+            function copyEvent(id) {
+                var str = document.getElementById(id);
+                window.getSelection().selectAllChildren(str);
+                document.execCommand("Copy")
+            }
+        </script>
     </head>
-    <body>
+    <body style="background-color: #bababa">
         <form method = post>
-            <label style="font-size:20px" for="boost">Boost:</label>
+            <label style="font-size:20px; color:blue" for="boost">Boost:</label>
             <input type="number" id="boost" name="boost" min="0" max="20" style="height: 18px" value={{dice_dict["Boost"]}}><br>
 
             <label style="font-size:20px" for="setback">Setback:</label>
             <input type="number" id="setback" name="setback" min="0" max="20" style="height: 18px" value={{dice_dict["Setback"]}}><br>
 
-            <label style="font-size:20px" for="ability">Ability:</label>
+            <label style="font-size:20px; color:green" for="ability">Ability:</label>
             <input type="number" id="ability" name="ability" min="0" max="20" style="height: 18px" value={{dice_dict["Ability"]}}><br>
 
-            <label style="font-size:20px" for="difficulty">Difficulty:</label>
+            <label style="font-size:20px; color:purple" for="difficulty">Difficulty:</label>
             <input type="number" id="difficulty" name="difficulty" min="0" max="20" style="height: 18px" value={{dice_dict["Difficulty"]}}><br>
 
-            <label style="font-size:20px" for="proficiency">Proficiency:</label>
+            <label style="font-size:20px; color:yellow" for="proficiency">Proficiency:</label>
             <input type="number" id="proficiency" name="proficiency" min="0" max="20" style="height: 18px" value={{dice_dict["Proficiency"]}}><br>
 
-            <label style="font-size:20px" for="challenge">Challenge:</label>
+            <label style="font-size:20px; color:red" for="challenge">Challenge:</label>
             <input type="number" id="challenge" name="challenge" min="0" max="20" style="height: 18px" value={{dice_dict["Challenge"]}}><br>
 
-            <label style="font-size:20px" for="force">Force:</label>
+            <label style="font-size:20px; color:white" for="force">Force:</label>
             <input type="number" id="force" name="force" min="0" max="20" style="height: 18px" value={{dice_dict["Force"]}}><br>
 
             <input type="submit" name="submit_button" value="Roll">
             <input type="submit" name="submit_button" value="Reset"><br>
           </form>
-        <h1>{{dice_dict}}</h1>
-        <h1>{{display_results}}</h1>
+        <div id="copy" class="results">
+            <h1>Dice rolled:</h1>
+            <h2>{{dice_dict}}</h2>
+            <h1>Total results:</h1>
+            <h2>{{counted_results_dict}}</h2>
+            <h1>Outcome:</h1>
+            <h2>{{display_results}}</h2>
+        </div>
+        <button type="button" onclick="copyEvent('copy')">Copy Results</button>
     </body>
 </html>

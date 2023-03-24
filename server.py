@@ -49,7 +49,8 @@ def driver():
     return flask.render_template (
         "webpage.html",
         dice_dict = dice_dict,
+        counted_results_dict = counted_results_dict,
         display_results = display_results
     )
-
-app.run(debug = True)
+    
+app.run(debug=True)
