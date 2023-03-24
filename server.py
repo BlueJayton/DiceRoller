@@ -11,11 +11,6 @@ dice_dict = {"Boost" : 0, "Setback" : 0,
              "Ability" : 0, "Difficulty" : 0,
              "Proficiency" : 0, "Challenge" : 0,
              "Force" : 0}
-    
-counted_results_dict = {"Successes" : 0, "Failures" : 0,
-                        "Advantages" : 0, "Threats" : 0,
-                        "Triumphs" : 0, "Despairs" : 0,
-                        "Lights" : 0, "Darks" : 0}
 
 display_results = []
 
