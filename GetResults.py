@@ -133,6 +133,7 @@ def calculate_proficiency_dice (dice_dict, counted_results_dict):
             counted_results_dict['Advantages'] += 1
         elif (roll == 12):
             counted_results_dict['Triumphs'] += 1
+            counted_results_dict['Successes'] += 1
             
     return
 
@@ -172,6 +173,7 @@ def calculate_challenge_dice (dice_dict, counted_results_dict):
             counted_results_dict['Threats'] += 1
         elif (roll == 12):
             counted_results_dict['Despairs'] += 1
+            counted_results_dict['Failures'] += 1
             
     return
 

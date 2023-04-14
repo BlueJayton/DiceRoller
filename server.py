@@ -47,5 +47,3 @@ def driver():
         counted_results_dict = counted_results_dict,
         display_results = display_results
     )
-    
-app.run(debug=True)
